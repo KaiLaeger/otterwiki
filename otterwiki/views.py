@@ -152,6 +152,18 @@ def admin_user_management():
         return otterwiki.preferences.handle_user_management(request.form)
 
 
+# KL: 250514 TODO
+@app.route(
+    "/-/admin/oidc_settings", methods=["POST", "GET"]
+)  # pyright: ignore -- false positive
+@login_required
+def admin_oidc_settings():
+    if request.method == "GET":
+        return otterwiki.preferences.oidc_settings_form()
+    else:
+        return otterwiki.preferences.handle_user_management(request.form)
+
+
 @app.route(
     "/-/admin/sidebar_preferences", methods=["POST", "GET"]
 )  # pyright: ignore -- false positive

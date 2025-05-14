@@ -46,6 +46,12 @@
     </span>
     Mail Preferences
 </a>
+<a href="{{ url_for("admin_oidc_settings") }}" class="sidebar-link sidebar-link-with-icon">
+  <span class="sidebar-icon">
+      <i class="fas fa-users"></i>
+  </span>
+  OIDC Settings
+</a>
 {% endif %}
 {% endblock %}
 {% block content %}

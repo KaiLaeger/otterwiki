@@ -1,0 +1,28 @@
+{# vim: set et ts=8 sts=4 sw=4 ai ft=jinja.html: #}
+{% extends "settings.html" %}
+{% block content %}
+<!--KL 250514 TODO possibly move to User management-->
+<div class="card m-auto m-lg-20" id="oidc_settings">
+<div class="mw-full">
+<form action="{{ url_for("admin_oidc_settings") }}" method="POST">
+<h3 class="card-title">OIDC settings</h2>
+{##}
+  <div class="form-group">
+    <label for="realm" class="required">Realm</label>
+    <input name="realm" type="text" class="form-control" id="realm">
+    {# <div class="form-text"> ...  </div> #}
+  </div>
+{##}
+  <div class="form-group">
+    <label for="client_id" class="required">Client ID</label>
+    <input name="client_id" type="text" class="form-control" id="client_id">
+    {# <div class="form-text"> ...  </div> #}
+  </div>
+{##}
+  <div class="form-group">
+    <label for="endpoint_discovery_url" class="required">Endpoint Discovery</label>
+    <input name="endpoint_discovery_url" type="text" class="form-control" id="endpoint_discovery_url">
+    {# <div class="form-text"> ...  </div> #}
+  </div>
+</div>
+{% endblock %}

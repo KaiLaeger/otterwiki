@@ -390,6 +390,20 @@ def user_management_form():
     )
 
 
+# KL 250514 TODO handle_oidc_settings(form)
+def oidc_settings_form():
+    if not has_permission("ADMIN"):
+        abort(403)
+    # query user
+    user_list = get_all_user()
+    # render form
+    return render_template(
+        "admin/oidc_settings.html",
+        title="OIDC Settings",
+        user_list=user_list,
+    )
+
+
 def user_edit_form(uid):
     if not has_permission("ADMIN"):
         abort(403)
