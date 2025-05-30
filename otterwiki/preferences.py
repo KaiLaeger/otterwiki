@@ -316,6 +316,42 @@ def handle_user_management(form):
     return redirect(url_for("admin_user_management"))
 
 
+def handle_oidc_settings(form):
+    if not has_permission("ADMIN"):
+        return abort(403)
+    error = 0
+    for name in [
+        "oidc_client_secret",
+        "oidc_endpoint_discovery_url",
+        "oidc_client_id",
+        "oidc_realm",
+    ]:
+        if empty(form.get(name)):
+            match name:
+                case "oidc_realm":
+                    toast("OIDC Realm must not be empty.", "error")
+                    error += 1
+                case "oidc_client_id":
+                    toast("Client ID must not be empty.", "error")
+                    error += 1
+                case "oidc_endpoint_discovery_url":
+                    toast("Discovery URL must not be empty.", "error")
+                    error += 1
+                case "oidc_client_secret":
+                    toast("Client secret must not be empty.", "error")
+                    error += 1
+                case _:
+                    toast("Something went wrong", "error")
+        else:
+            _update_preference(name.upper(), form.get(name, ""))
+    if error < 1:
+        toast("OIDC Settings updated.")
+    # commit changes to the database
+    db.session.commit()
+    update_app_config()
+    return redirect(url_for("admin_oidc_settings"))
+
+
 def admin_form():
     if not has_permission("ADMIN"):
         abort(403)

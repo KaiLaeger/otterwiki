@@ -60,6 +60,10 @@ app.config.update(
     MAX_FORM_MEMORY_SIZE=1_000_000,
     HTML_EXTRA_HEAD="",
     HTML_EXTRA_BODY="",
+    OIDC_REALM="",
+    OIDC_CLIENT_ID="",
+    OIDC_ENDPOINT_DISCOVERY_URL="",
+    OIDC_CLIENT_SECRET="",
 )
 app.config.from_envvar("OTTERWIKI_SETTINGS", silent=True)
 

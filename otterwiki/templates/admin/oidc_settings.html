@@ -8,21 +8,32 @@
 <h3 class="card-title">OIDC settings</h2>
 {##}
   <div class="form-group">
-    <label for="realm" class="required">Realm</label>
-    <input name="realm" type="text" class="form-control" id="realm">
+    <label for="oidc_realm" class="required">Realm</label>
+    <input name="oidc_realm" type="text" class="form-control" id="oidc_realm" placeholder="OIDC Realm" value="{{ config.OIDC_REALM or '' }}">
     {# <div class="form-text"> ...  </div> #}
   </div>
 {##}
   <div class="form-group">
-    <label for="client_id" class="required">Client ID</label>
-    <input name="client_id" type="text" class="form-control" id="client_id">
+    <label for="oidc_client_id" class="required">Client ID</label>
+    <input name="oidc_client_id" type="text" class="form-control" id="oidc_client_id" placeholder="Client ID" value="{{ config.OIDC_CLIENT_ID or '' }}">
     {# <div class="form-text"> ...  </div> #}
   </div>
 {##}
   <div class="form-group">
-    <label for="endpoint_discovery_url" class="required">Endpoint Discovery</label>
-    <input name="endpoint_discovery_url" type="text" class="form-control" id="endpoint_discovery_url">
+    <label for="oidc_endpoint_discovery_url" class="required">Endpoint Discovery</label>
+    <input name="oidc_endpoint_discovery_url" type="text" class="form-control" id="oidc_endpoint_discovery_url" placeholder="Endpoint Discovery URL" value="{{ config.OIDC_ENDPOINT_DISCOVERY_URL or '' }}">
     {# <div class="form-text"> ...  </div> #}
+  </div>
+{##}
+  <div class="form-group">
+    <label for="oidc_client_secret" class="required">Client Secret</label>
+    <input name="oidc_client_secret" type="text" class="form-control" id="oidc_client_secret" placeholder="Client Secret" autocomplete="off" style="-webkit-text-security:disc;" value="{{ config.OIDC_CLIENT_SECRET or '' }}">
   </div>
 </div>
+{##}
+<div class="form-text pt-0 mt-0 mb-20"></div>
+{##}
+<div class="mt-10">
+    <input class="btn btn-primary" name="update_preferences" type="submit" value="Save OIDC Settings">
+  </div>
 {% endblock %}

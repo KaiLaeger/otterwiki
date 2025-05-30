@@ -161,7 +161,7 @@ def admin_oidc_settings():
     if request.method == "GET":
         return otterwiki.preferences.oidc_settings_form()
     else:
-        return otterwiki.preferences.handle_user_management(request.form)
+        return otterwiki.preferences.handle_oidc_settings(request.form)
 
 
 @app.route(
