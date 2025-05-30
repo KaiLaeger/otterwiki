@@ -60,6 +60,7 @@ app.config.update(
     MAX_FORM_MEMORY_SIZE=1_000_000,
     HTML_EXTRA_HEAD="",
     HTML_EXTRA_BODY="",
+    OIDC_ENABLE_OIDC=False,
     OIDC_REALM="",
     OIDC_CLIENT_ID="",
     OIDC_ENDPOINT_DISCOVERY_URL="",
@@ -159,6 +160,7 @@ def update_app_config():
                 "SIDEBAR_MENUTREE_IGNORE_CASE",
                 "GIT_WEB_SERVER",
                 "HIDE_LOGO",
+                "OIDC_ENABLE_OIDC",
             ] or item.name.upper().startswith("SIDEBAR_SHORTCUT_"):
                 item.value = item.value.lower() in ["true", "yes"]
             if item.name.upper() in ["MAIL_PORT"]:

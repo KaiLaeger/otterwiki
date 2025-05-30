@@ -19,12 +19,24 @@
       <label for="remember-my-information">Remember me</label>
     </div>
   </div>
-  <input class="btn btn-primary" type="submit" value="Login">
+  <div class="form-group">
+    <input class="btn btn-primary" type="submit" value="Login">
 
-  {% if not config.DISABLE_REGISTRATION %}
-  <a href="{{ url_for("register") }}" class="btn btn-link" role="button">Register</a>
+    {% if not config.DISABLE_REGISTRATION %}
+    <a href="{{ url_for("register") }}" class="btn btn-link" role="button">Register</a>
+    {% endif %}
+
+    <a href="{{ url_for("lost_password") }}" class="btn btn-link" role="button">Lost your password?</a>
+  </div>
+
+  <!-- KL 250530 TODO configure the button to actually login via OIDC and rework Optic-->
+  {%if config.OIDC_ENABLE_OIDC %}
+  <div class="form-text pt-0 mt-0 mb-20"></div>
+  <div class="form-group">
+    <a href="test.test" class="btn btn-primary">
+      <i class ="fab fa-openid"></i>
+      <span>Login with {{ config.OIDC_REALM }}</span>
+    </a>
   {% endif %}
-
-  <a href="{{ url_for("lost_password") }}" class="btn btn-link" role="button">Lost your password?</a>
 </form>
 {% endblock %}

@@ -320,6 +320,10 @@ def handle_oidc_settings(form):
     if not has_permission("ADMIN"):
         return abort(403)
     error = 0
+    for checkbox in [
+        "oidc_enable_oidc",
+    ]:
+        _update_preference(checkbox.upper(), form.get(checkbox, "False"))
     for name in [
         "oidc_client_secret",
         "oidc_endpoint_discovery_url",
